@@ -39,9 +39,25 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+this.stomach = [];
+this.name = name;
+this.age = age;
 
+this.eat = function (food) {
+return this.stomach.push(food);
+};
+this.poop = function () {
+return this.stomach.length = 0;
 }
+this.toString = function () {
+return `${name}, ${age}`;
+}
+};
+
+const nico = new Person('Nico', 23);
+// nico.eat('pizza');
+// console.log(nico.stomach);
 
 /*
   TASK 2
@@ -57,9 +73,18 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+this.tank = 0;
+this.odometer = 0;
 
+this.fill = function (gallons) {
+  return this.tank = this.tank + gallons;
 }
+// this.drive = function (distance) {
+//   return this.odometer = this.odometer + distance && 
+// }
+};
+
 
 /*
   TASK 3
@@ -68,18 +93,26 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+Person.call(this, name, age);
 
+this.play = function () {
+  return `Playing with ${favoriteToy}`
 }
+};
+Baby.prototype = Object.create(Person.prototype);
+
+// const joseph = new Baby('joey', 3, 'rattle');
+// console.log(joseph.play());
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. it can refer to the parent object in the global scope or the if no declared object, the window.
+  2. if it is a declared object it will be Implicit Binding
+  3. using 'new' insinuates you are creating a new operator with new constructor
+  4. Explicit Binding is when you take a parent constructor and pass its elements to the child constructor, with .call or .apply so it refers to the specific object you choose.
 */
 
 
