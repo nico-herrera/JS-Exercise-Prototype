@@ -76,15 +76,28 @@ const nico = new Person('Nico', 23);
 function Car(model, milesPerGallon) {
 this.tank = 0;
 this.odometer = 0;
+this.milesPerGallon = milesPerGallon
 
 this.fill = function (gallons) {
   return this.tank = this.tank + gallons;
-}
-// this.drive = function (distance) {
-//   return this.odometer = this.odometer + distance && 
-// }
+};
+// STRETCH
+this.drive = function (distance) {
+this.odometer = this.odometer + distance;
+this.tank = this.tank - (distance / this.milesPerGallon)
+if (this.tank <= 0) {
+  console.log(`I ran out of fuel at ${this.odometer} miles!`);
+};
 };
 
+};
+
+const car1 = new Car('tlx', 20);
+
+car1.fill(2);
+car1.drive(35);
+
+console.log(car1);
 
 /*
   TASK 3
