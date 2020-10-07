@@ -39,9 +39,25 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+this.stomach = [];
+this.name = name;
+this.age = age;
 
+this.eat = function (food) {
+return this.stomach.push(food);
+};
+this.poop = function () {
+return this.stomach.length = 0;
 }
+this.toString = function () {
+return `${name}, ${age}`;
+}
+};
+
+const nico = new Person('Nico', 23);
+// nico.eat('pizza');
+// console.log(nico.stomach);
 
 /*
   TASK 2
@@ -57,9 +73,31 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+this.tank = 0;
+this.odometer = 0;
+this.milesPerGallon = milesPerGallon
 
-}
+this.fill = function (gallons) {
+  return this.tank = this.tank + gallons;
+};
+// STRETCH
+this.drive = function (distance) {
+this.odometer = this.odometer + distance;
+this.tank = this.tank - (distance / this.milesPerGallon)
+if (this.tank <= 0) {
+  console.log(`I ran out of fuel at ${this.odometer} miles!`);
+};
+};
+
+};
+
+const car1 = new Car('tlx', 20);
+
+car1.fill(2);
+car1.drive(35);
+
+console.log(car1);
 
 /*
   TASK 3
@@ -68,18 +106,29 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+Person.call(this, name, age);
 
+this.play = function () {
+  return `Playing with ${favoriteToy}`
 }
+};
+Baby.prototype = Object.create(Person.prototype);
+
+// const joseph = new Baby('joey', 3, 'rattle');
+// console.log(joseph.play());
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  ANSWERS :
+    1) Window binding is when referring to the global scope, or if there is no declared object.
+    2) Implicit Binding is referred to a specific declared object.
+    3) 'new' binding which refers to a new operator with constructor.
+    4) Explicit Binding which used the call. or apply, which then refers to the specific object of choice.
+
 */
 
 
