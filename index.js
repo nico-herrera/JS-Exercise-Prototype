@@ -109,10 +109,13 @@ Baby.prototype = Object.create(Person.prototype);
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. it can refer to the parent object in the global scope or the if no declared object, the window.
-  2. if it is a declared object it will be Implicit Binding
-  3. using 'new' insinuates you are creating a new operator with new constructor
-  4. Explicit Binding is when you take a parent constructor and pass its elements to the child constructor, with .call or .apply so it refers to the specific object you choose.
+
+  ANSWERS :
+    1) Window binding is when referring to the global scope, or if there is no declared object.
+    2) Implicit Binding is referred to a specific declared object.
+    3) 'new' binding which refers to a new operator with constructor.
+    4) Explicit Binding which used the call. or apply, which then refers to the specific object of choice.
+
 */
 
 
